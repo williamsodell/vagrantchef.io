@@ -1,0 +1,29 @@
+---
+lamp:
+  cookbooks:
+    - apache2
+    - mysql
+    - php
+  recipes:
+    - apache2
+    - php
+    - 'mysql::server'
+  port_forward: 
+    guest: 80
+    host: 8080
+rails:
+  cookbooks:
+    - nodejs
+    - ruby_build
+    - rbenv
+    - postgresql
+    - sqlite
+    - redis
+  recipes:
+    - nodejs
+    - ruby_build
+    - 'rbenv::user'
+    - 'rbenv::vagrant'
+  port_forward: 
+    guest: 3000
+    host: 3000

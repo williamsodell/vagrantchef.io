@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site "http://community.opscode.com/api/v1"
+
+<% @cookbooks.each do |cookbook| %>
+cookbook '<%= cookbook.name %>'<%= ", :git => '#{cookbook.git}'" if !cookbook.git.nil? %>, '<%= cookbook.version %>'
+<% end %>

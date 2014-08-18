@@ -1,0 +1,55 @@
+---
+ubuntu:
+  apt: 
+  	required: true
+  	version: ~> 2.5.0
+  	recipe: apt
+centos:
+  yum:
+    required: true
+    version: ~> 3.2.2
+    recipe: yum
+all:
+  git:
+  	required: true
+  	version: ~> 4.0.2
+  	recipe: git
+  build-essential:
+  	required: true
+  	version: ~> 2.0.6
+  apache2:
+    version: ~> 2.0.0
+  apache_vhosts:
+  	required_if: apache2
+    version: ~> 20140206
+  mysql:
+    version: ~> 5.3.6
+    config: 
+      server_root_password: 
+  ruby_build:
+    version: ~> 0.8.0
+  rbenv:
+    version: ~> v0.7.2
+    git: https://github.com/fnichol/chef-rbenv
+    config:
+      user_installs:
+        user: vagrant
+        rubies: 
+         - 2.1.2
+        global: 2.1.2
+        gems: 
+          2.1.2:
+            name: bundler
+  redis:
+    version: ~> 3.0.4
+  sqlite:
+    version: ~> 1.1.0
+  postgresql:
+    version: ~> 3.4.1
+    config:
+      password:
+        postgres: 
+  nodejs: 
+    version: ~> 2.0.0
+  php:
+    version: ~> 1.4.6

@@ -1,0 +1,39 @@
+---
+virtualbox:
+  - centos-5.10-i386
+  - centos-5.10
+  - centos-6.5-i386
+  - centos-6.5
+  - centos-7.0
+  - ubuntu-12.04-i386
+  - ubuntu-12.04
+  - ubuntu-12.10-i386
+  - ubuntu-12.10
+  - ubuntu-13.04-i386
+  - ubuntu-13.04
+  - ubuntu-13.10-i386
+  - ubuntu-13.10
+  - ubuntu-14.04-i386
+  - ubuntu-14.04
+vmware_desktop:
+  - centos-5.10-i386
+  - centos-5.10
+  - centos-6.5-i386
+  - centos-6.5
+  - centos-7.0
+  - ubuntu-12.04-i386
+  - ubuntu-12.04
+  - ubuntu-12.10-i386
+  - ubuntu-12.10
+  - ubuntu-13.04-i386
+  - ubuntu-13.04
+  - ubuntu-13.10-i386
+  - ubuntu-13.10
+  - ubuntu-14.04-i386
+  - ubuntu-14.04
+parallels:
+  - centos-5.9
+  - centos-6.5
+  - ubuntu-12.04
+  - ubuntu-13.10
+  - ubuntu-14.04

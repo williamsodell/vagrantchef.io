@@ -1,0 +1,60 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'yaml'
+
+VAGRANTFILE_API_VERSION = "2"
+
+dir = File.dirname(File.expand_path(__FILE__))
+data = YAML.load_file("#{dir}/vagrant.yaml")
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define "primary", primary: true do |box|
+    box.vm.box = "#{data['vagrant']['vm']['box']}"
+    box.vm.box_url = "#{data['vagrant']['vm']['box_url']}"
+
+    # Configurate the virtual machine to use 2GB of RAM
+    box.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--memory", "2048"]
+    end
+
+    # Forward the Rails server default port to the host
+    box.vm.network :forwarded_port, guest: 3000, host: 3000
+
+    # Use Chef Solo to provision our virtual machine
+    box.vm.provision :chef_solo do |chef|
+      chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
+
+      chef.add_recipe "apt"
+      chef.add_recipe "nodejs"
+      chef.add_recipe "ruby_build"
+      chef.add_recipe "rbenv::user"
+      chef.add_recipe "rbenv::vagrant"
+      chef.add_recipe "vim"
+      #chef.add_recipe "apache2"
+      #chef.add_recipe "php"
+      chef.add_recipe "mysql::server"
+      chef.add_recipe "mysql::client"
+
+      # Install Ruby 2.1.2 and Bundler
+      # Set an empty root password for MySQL to make things simple
+      chef.json = {
+        rbenv: {
+          user_installs: [{
+            user: 'vagrant',
+            rubies: ["2.1.2"],
+            global: "2.1.2",
+            gems: {
+              "2.1.2" => [
+                { name: "bundler" }
+              ]
+            }
+          }]
+        },
+        mysql: {
+          server_root_password: ''
+        }
+      }
+    end
+  end
+end
