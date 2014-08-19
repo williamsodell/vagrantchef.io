@@ -1,14 +1,55 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Vagrant</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : t('title') %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <a href="https://github.com/williamsodell/vagrantchef.io/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+    <%= display_flash_messages %>
+
+    <div class="row">
+      <div class="large-12 columns">
+        &nbsp;
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        &nbsp;
+      </div>
+    </div>
+    
+    <%= yield %>
+    
+    <footer class="row">
+      <div class="large-4 columns">
+        <p>
+          © <%= Time.now.year %> BnC Group. All rights reserved.
+        </p>
+      </div>
+      <div class="large-4 columns">
+        <p>
+          <%= link_to "Disclaimer", disclaimer_path %>
+        </p>
+      </div>
+
+      <div class="large-4 columns">
+        <p class="right">
+          VagrantChef.io is a product of <a href="http://www.bncstudios.co" class="brand"><strong>BnC Group</strong></a>.
+        </p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
