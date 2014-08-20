@@ -12,15 +12,22 @@
   </head>
 
   <body>
+    <div class="row">
+      <div class="large-3 columns">
+        <h1><img src="http://placehold.it/400x100&text=Logo"/></h1>
+      </div>
+      <div class="large-9 columns">
+        <ul class="inline-list right">
+          <li><%= link_to "Home", root_path %></li>
+          <!--li><a href="#">Section 2</a></li>
+          <li><a href="#">Section 3</a></li-->
+          <li><%= link_to "Disclaimer", disclaimer_path %></li>
+        </ul>
+      </div>
+    </div>
     <a href="https://github.com/williamsodell/vagrantchef.io/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 
     <%= display_flash_messages %>
-
-    <div class="row">
-      <div class="large-12 columns">
-        &nbsp;
-      </div>
-    </div>
 
     <div class="row">
       <div class="large-12 columns">
@@ -31,21 +38,18 @@
     <%= yield %>
     
     <footer class="row">
-      <div class="large-4 columns">
-        <p>
-          © <%= Time.now.year %> BnC Group. All rights reserved.
-        </p>
-      </div>
-      <div class="large-4 columns">
-        <p>
-          <%= link_to "Disclaimer", disclaimer_path %>
-        </p>
-      </div>
-
-      <div class="large-4 columns">
-        <p class="right">
-          VagrantChef.io is a product of <a href="http://www.bncstudios.co" class="brand"><strong>BnC Group</strong></a>.
-        </p>
+      <div class="large-12 columns">
+        <hr/>
+        <div class="large-6 columns">
+          <p>
+            © <%= Time.now.year %> BnC Group. All rights reserved.
+          </p>
+        </div>
+        <div class="large-6 columns">
+          <p class="right">
+            VagrantChef.io is a product of <a href="http://www.bncstudios.co" class="brand"><strong>BnC Group</strong></a>.
+          </p>
+        </div>
       </div>
     </footer>
 

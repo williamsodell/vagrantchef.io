@@ -1,9 +1,9 @@
 ---
 ubuntu:
   apt: 
-  	required: true
-  	version: ~> 2.5.0
-  	recipe: apt
+    required: true
+    version: ~> 2.5.0
+    recipe: apt
 centos:
   yum:
     required: true
@@ -11,16 +11,16 @@ centos:
     recipe: yum
 all:
   git:
-  	required: true
-  	version: ~> 4.0.2
-  	recipe: git
+    required: true
+    version: ~> 4.0.2
+    recipe: git
   build-essential:
-  	required: true
-  	version: ~> 2.0.6
+    required: true
+    version: ~> 2.0.6
   apache2:
     version: ~> 2.0.0
   apache_vhosts:
-  	required_if: apache2
+    required_if: apache2
     version: ~> 20140206
   mysql:
     version: ~> 5.3.6
