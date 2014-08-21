@@ -1,21 +1,102 @@
 <div class="row">
 	<div class="large-9 push-3 columns">
-		<h3>Page Title <small>Page subtitle</small></h3>
-		<p>Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin. Venison tail chuck pork chop, andouille ball tip beef ribs flank boudin bacon. Salami andouille pork belly short ribs flank cow. Salami sirloin turkey kielbasa. Sausage venison pork loin leberkas chuck short loin, cow ham prosciutto pastrami jowl. Ham hock jerky tri-tip, fatback hamburger shoulder swine pancetta ground round. Tri-tip prosciutto meatball turkey, brisket spare ribs shankle chuck cow chicken ham hock boudin meatloaf jowl.</p>
-		<p>Ground round pastrami pork loin tenderloin jerky. Jerky spare ribs biltong, ham hock ham capicola pork. Jerky turducken pork, meatloaf sausage capicola swine corned beef turkey short loin. Tongue prosciutto pork loin, ground round spare ribs venison kielbasa strip steak.</p>
-		<p>Hamburger bresaola turkey t-bone, leberkas salami pork chop ham hock beef ribs. Rump biltong meatball venison, short ribs pork loin shank shankle corned beef beef. Cow salami jowl short loin hamburger fatback. Short ribs pork belly shoulder pastrami drumstick salami corned beef ham hock bresaola. Swine filet mignon cow sausage ball tip. Cow ribeye ground round, sausage pork loin pig beef ball tip turkey boudin.</p>
-		<p>Prosciutto ball tip filet mignon andouille frankfurter chicken rump sausage meatball. Filet mignon meatloaf ground round andouille ham hock pork. Bresaola short loin meatball chuck hamburger pig. Turkey venison chuck, tongue fatback tail swine jerky corned beef shank kielbasa prosciutto ribeye ham tri-tip. Rump bacon pork belly meatloaf shoulder short loin meatball kielbasa pork loin tongue bresaola brisket corned beef jowl prosciutto. Beef ribs shankle short ribs pork belly corned beef fatback pork chop tongue biltong boudin strip steak sirloin meatloaf pancetta.</p>
+		<form class="tabs-content">
+			<div class="content active" id="deploy-target">
+				<h3 class="title">Where do you want your virtual machine?</h3>
+				<div class="" data-equalizer>
+					<% @boxes.each do |provider| %>
+						<div class="large-4 columns panel" data-equalizer-watch>
+						<h4><%= provider[0] %></h4>
+							<% provider[1].each do |box| %>
+								<input type="radio" name="box" value="<%= box %>" id="<%= provider[0] %>-box-<%= box %>" />
+								<label for="<%= provider[0] %>-box-<%= box %>"><%= box %></label>
+								<br />
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+
+				<a class="next button right" href="#prebuilt-list">Next</a>
+			</div>
+			<div class="content" id="prebuilt-list">
+				<h3 class="title">Would you like to start with a typical build?</h3>
+
+				<div class="" data-equalizer>
+					<% @configurations.each do |configuration| %>
+						<ul class="pricing-table">
+							<li class="title"><%= configuration[0] %></li>
+							<!--li class="price">$99.99</li>
+							<li class="description">An awesome description</li-->
+							<% configuration[1].each do |package| %>
+								<li class="bullet-item"><%= package[0] %>: <%= package[1] %></li>
+							<% end %>
+							<li class="cta-button">
+								<a class="button" href="#">Select</a>
+							</li>
+						</ul>
+					<% end %>
+				</div>
+
+				<a class="next button" href="#deploy-target">Back</a>
+				<a class="next button right" href="#server-packages">Next</a>
+			</div>
+			<div class="content" id="server-packages">
+				<h3 class="title"></h3>
+
+				<a class="next button" href="#prebuilt-list">Back</a>
+				<a class="next button right" href="#firewall-rules">Next</a>
+			</div>
+			<div class="content" id="firewall-rules">
+				<h3 class="title"></h3>
+
+				<a class="next button" href="#server-packages">Back</a>
+				<a class="next button right" href="#webservers">Next</a>
+			</div>
+			<div class="content" id="webservers">
+				<h3 class="title"></h3>
+
+				<a class="next button" href="#firewall-rules">Back</a>
+				<a class="next button right" href="#languages">Next</a>
+			</div>
+			<div class="content" id="languages">
+				<h3 class="title"></h3>
+
+				<a class="next button" href="#webservers">Back</a>
+				<a class="next button right" href="#databases">Next</a>
+			</div>
+			<div class="content" id="databases">
+				<h3 class="title"></h3>
+
+				<a class="next button" href="#languages">Back</a>
+				<a class="next button right" href="#additional-tools">Next</a>
+			</div>
+			<div class="content" id="additional-tools">
+				<h3 class="title"></h3>
+
+				<a class="next button" href="#databases">Back</a>
+				<a class="next button right" href="#create">Next</a>
+			</div>
+			<div class="content" id="create">
+				<h3 class="title"></h3>
+
+				<a class="next button" href="#additional-tools">Back</a>
+				<a class="next button right" href="#">Create</a>
+			</div>
+		</form>
 	</div>
 
 
 	<div class="large-3 pull-9 columns">
-		<ul class="side-nav">
-			<li><a href="#">Section 1</a></li>
-			<li><a href="#">Section 2</a></li>
-			<li><a href="#">Section 3</a></li>
-			<li><a href="#">Section 4</a></li>
-			<li><a href="#">Section 5</a></li>
-			<li><a href="#">Section 6</a></li>
+		<ul class="side-nav tabs" data-tab data-options="deep_linking:true">
+			<li class="active"><a href="#deploy-target">Deploy Target</a></li>
+			<li><a href="#prebuilt-list">Prebuilt List</a></li>
+			<li><a href="#server-packages">Server Packages</a></li>
+			<li><a href="#firewall-rules">Firewall Rules</a></li>
+			<li><a href="#webservers">Webservers</a></li>
+			<li><a href="#languages">Languages</a></li>
+			<li><a href="#databases">Databases</a></li>
+			<li><a href="#additional-tools">Additional Tools</a></li>
+			<li><a href="#create">Create</a></li>
 		</ul>
 	</div>
 </div>

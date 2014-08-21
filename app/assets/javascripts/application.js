@@ -15,4 +15,7 @@
 //= require foundation
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){ 
+	location.hash = '';
+	$(document).foundation();
+});
