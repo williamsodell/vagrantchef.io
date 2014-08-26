@@ -1,6 +1,7 @@
 <div class="row">
 	<div class="large-9 push-3 columns">
-		<form class="tabs-content">
+		<%= form_tag download_path, :class => 'tabs-content', :method => 'post' do %>
+		<!--form class="tabs-content" action="/download" method="POST"-->
 			<div class="content active" id="deploy-target">
 				<h3 class="title">Where do you want your virtual machine?</h3>
 				<div class="" data-equalizer>
@@ -80,9 +81,9 @@
 				<h3 class="title"></h3>
 
 				<a class="next button" href="#additional-tools">Back</a>
-				<a class="next button right" href="#">Create</a>
+				<input type="submit" class="button right" value="Create" />
 			</div>
-		</form>
+		<% end %>
 	</div>
 
 
